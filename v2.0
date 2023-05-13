@@ -1,0 +1,125 @@
+#Defino funcion de pedir Pizzas y personas.
+#devuelve una lista con los valores personas y pizzas.
+
+def entradas():
+    entradasok =[]
+    personas = input("¿Cuantas personas vais a ser? ")
+    
+    while True:
+        
+        try:
+            personas = int(personas)
+            if personas >=0:
+                break
+            else:
+                print("Debes introducir un número positivo con el teclado numérico.")
+                
+                personas = input("¿Cuántas personas vais a ser? ")
+               
+                
+        except ValueError:
+            print("Debes introducir un número positivo con el teclado numérico")
+            
+            personas = input("¿Cuántas personas vais a ser? ")
+            
+        
+    pizzas = input("¿Cuantas pizzas vais a pedir? ")    
+    while True:
+            
+        try:
+            pizzas = int(pizzas)
+            if pizzas >=0:
+                break
+            else:
+                print("Debes introducir un número positivo con el teclado numérico.")
+                
+                pizzas = input("¿Cuantas pizzas vais a pedir? ")
+                
+                
+        
+        except ValueError:
+            print("Debes introducir un número positivo con el teclado numérico")
+            
+            pizzas = input("¿Cuantas pizzas vais a pedir? ")
+            
+    personas = int(personas)    
+    pizzas = int(pizzas)
+        
+    entradasok = [personas, pizzas]
+    return entradasok
+    
+            
+            
+#Creo una funcion para calcular sobra y porciones                   
+def personas_pizzas(personas, pizzas):
+        
+            
+    if personas %2 == 0:
+        sobra = 0
+    else:
+        sobra = pizzas
+        
+    porciones = pizzas
+    cuentas = [sobra, porciones, personas, pizzas]
+    return cuentas
+        
+       
+    
+#Creo una fución para identificar plurales y singulares y usarlos en el print final.
+
+def plural_singular(personas,pizzas,sobra,porciones):
+    if personas > 1:
+        ps1 = 'personas'
+    else:
+        ps1 = 'persona'
+    if pizzas > 1:
+        ps2 = 'pizzas'
+    else:
+        ps2 = 'pizza'
+    if sobra > 1:
+        ps3 = 'sobran'
+    else:
+        ps3 = 'sobra'
+    if porciones >1:
+        ps4 = 'porciones'
+    else:
+        ps4 = 'porción'
+    
+    plusing =[ps1, ps2, ps3, ps4]
+    return plusing
+    
+    
+
+#Solicito los inputs al usuario llamando a la funcion de inputs a la vez que obtengo los valores de la lista que genera la funcion.
+
+entradasok = entradas()
+
+personas = entradasok[0]
+pizzas = entradasok[1]
+
+#recupero el return de la funcion personas_pizzas(personas,pizzas)    
+cuentas = personas_pizzas(personas,pizzas)
+
+#genero variables con los valores de la lista cuentas.
+sobra = cuentas[0]
+porciones = cuentas[1]
+personas =cuentas[2]
+pizzas = cuentas[3]
+
+#llamo a la funcion plural_singular(personas, pizzas, sobra, porciones)
+plural_singular(personas, pizzas, sobra, porciones)
+
+#exporto el return de la funcion plural_singular(personas, pizzas, sobra, porciones).
+
+plus = plural_singular(personas, pizzas, sobra, porciones)
+
+
+
+
+
+printfinal = print("{} {} con {} {} \nCada persona toma {} {} \n{} {} {}".format(personas,plus[0],pizzas,plus[1],porciones,plus[3],plus[2],sobra,plus[3]))
+
+
+    
+        
+    
